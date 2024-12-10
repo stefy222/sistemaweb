@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Evento - EVENTIX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar un Nuevo Evento</h1>
+
+        <!-- Asegúrate de incluir el atributo enctype="multipart/form-data" en el formulario -->
+        <form action="{{ url_for('tu_evento') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre_evento">Nombre del Evento:</label>
+                <input type="text" name="nombre_evento" id="nombre_evento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha del Evento:</label>
+                <input type="datetime-local" name="fecha" id="fecha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_ciudad">Ciudad:</label>
+                <select class="form-control" id="id_ciudad" name="id_ciudad">
+                    {% for ciudad in ciudades %}
+                        <option value="{{ ciudad.id_ciudad }}">{{ ciudad.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Campo para cargar la imagen -->
+            <div class="form-group">
+                <label for="imagen">Imagen del Evento:</label>
+                <input type="file" name="imagen" id="imagen" accept="image/*" required>
+            </div>
+
+            <button type="submit">Registrar Evento</button>
+        </form>
+
+        <!-- Botón de cerrar sesión -->
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    </div>
+</body>
+</html>

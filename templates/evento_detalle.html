@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ evento.nombre_evento }}</title>
+</head>
+<body>
+    <h1>{{ evento.nombre_evento }}</h1>
+    <img src="{{ url_for('static', filename='images/' + evento.imagen) }}" alt="{{ evento.nombre_evento }}">
+    <p>{{ evento.descripcion }}</p>
+    <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+    <p><strong>Ciudad:</strong> {{ evento.ciudad.nombre }}</p>
+    <a href="/">Volver</a>
+</body>
+</html>
